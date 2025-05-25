@@ -1,63 +1,87 @@
 "use client"
-
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Play, CheckCircle, Star, TrendingUp, Users, Shield, Zap } from "lucide-react"
+import { Badge } from "@/components/ui/badge" // Assuming this is your custom Badge
+import { ArrowRight, Play, CheckCircle, Star, TrendingUp, Users, Shield, Zap, Crown, Sparkles } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import Link from "next/link"
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    setIsVisible(true)
+    // Simple observer logic - will rely on the JS added separately
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+                // Optionally unobserve after first time
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 }); // Adjust threshold as needed
+
+    const heroSection = document.querySelector('.luxury-hero'); // Target the hero section element
+    if (heroSection) {
+        observer.observe(heroSection);
+    }
+
+    // Cleanup
+    return () => {
+        if (heroSection) observer.unobserve(heroSection);
+    };
   }, [])
+
 
   const stats = [
     { number: "500+", label: "Businesses Transformed", icon: <Users className="w-5 h-5" /> },
     { number: "95%", label: "Success Rate", icon: <Star className="w-5 h-5" /> },
+    // Update cost reduction stat to match value prop
     { number: "50%", label: "Cost Reduction", icon: <TrendingUp className="w-5 h-5" /> },
+    // Update to 24/7 Support based on your description
     { number: "24/7", label: "Support Available", icon: <Shield className="w-5 h-5" /> },
   ]
 
   const benefits = [
-    { text: "Fix What Others Ignore", icon: <CheckCircle className="w-5 h-5" /> },
-    { text: "All-in-One Solutions", icon: <Zap className="w-5 h-5" /> },
-    { text: "Data-Backed Results", icon: <TrendingUp className="w-5 h-5" /> },
-    { text: "Global Talent Access", icon: <Users className="w-5 h-5" /> },
+     // Example benefits reflecting your services
+    { text: "Secure Foundation", icon: <Shield className="w-5 h-5 text-primary" /> },
+    { text: "All-in-One Solutions", icon: <Zap className="w-5 h-5 text-primary" /> },
+    { text: "Cut Costs by 50%", icon: <Users className="w-5 h-5 text-primary" /> }, // Explicitly mention cost saving
+    { text: "Drive Real Growth", icon: <TrendingUp className="w-5 h-5 text-primary" /> },
   ]
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-emerald-50/30">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
-      <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-200/30 rounded-full blur-3xl -z-10 animate-float" />
-      <div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl -z-10 animate-float"
-        style={{ animationDelay: "1s" }}
-      />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"> {/* Use background variable */}
+      {/* Background Gradient & Dots */}
+      {/* Background gradients are applied to the body in globals.css */}
+      {/* Floating Red Dots */}
+      <div className="absolute inset-0">
+          <div className="luxury-dot" style={{ top: '20%', left: '70%', animationDelay: '0s' }}></div>
+          <div className="luxury-dot" style={{ top: '50%', left: '85%', animationDelay: '1s' }}></div>
+          <div className="luxury-dot" style={{ top: '80%', left: '60%', animationDelay: '2s' }}></div>
+           {/* Add more dots as needed for visual flair */}
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+      <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <div className={`space-y-8 ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
+          <div className={`space-y-8 ${isVisible ? "animate-luxury-fade" : "opacity-0"}`}>
             <div className="space-y-6">
-              <Badge className="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 px-4 py-2 text-sm font-medium animate-scale-in">
-                🚀 All-in-One Business Solutions
+              {/* Update Badge class and colors */}
+              <Badge className="luxury-badge mb-6 animate-luxury-pulse">
+                <Crown className="w-4 h-4 mr-2" />
+                Premium Business Solutions
               </Badge>
 
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-slate-900 via-emerald-800 to-slate-900 bg-clip-text text-transparent">
-                  From Startup
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                  to Scale-Up
-                </span>
+              {/* Update H1 class and text */}
+              <h1 className="luxury-heading"> {/* Use new heading class */}
+                <span className="block">From Startup</span>
+                <span className="block">to Scale-Up</span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-slate-600 leading-relaxed max-w-2xl text-balance">
-                <span className="font-semibold text-slate-800">Struggling to Thriving</span>—We Fix, Build & Grow Your
+              {/* Update p tag text and colors */}
+              <p className="text-xl md:text-2xl text-foreground/80 leading-relaxed max-w-2xl"> {/* Adjust text size and color */}
+                <span className="font-semibold text-text-dark">Struggling to Thriving</span>—We Fix, Build & Grow Your
                 Business with proven strategies and cutting-edge solutions.
               </p>
             </div>
@@ -65,156 +89,194 @@ export default function Hero() {
             {/* Benefits */}
             <div className="grid grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
+                 {/* Use standard flex/items-center */}
                 <div
                   key={index}
-                  className="flex items-center gap-3 animate-fade-in"
+                  className="flex items-center gap-3 text-text-dark animate-luxury-fade" // Use dark text color
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="text-emerald-600">{benefit.icon}</div>
-                  <span className="text-slate-700 font-medium">{benefit.text}</span>
+                  {/* Icon color controlled by parent text color or specific class */}
+                   {benefit.icon}
+                  <span className="font-semibold">{benefit.text}</span>
                 </div>
               ))}
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all group"
-              >
-                Get Free Consultation
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-4 text-lg font-semibold group"
-              >
-                <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                Watch Success Stories
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-6">
+              <Link href="/consultation">
+                 {/* Use luxury button class */}
+                <button className="luxury-button text-lg px-8 py-4 group"> {/* Adjust padding for button class */}
+                  <Sparkles className="w-5 h-5 mr-3 group-hover:rotate-180 transition-transform" /> {/* Subtle hover animation */}
+                  Get Free Consultation
+                   {/* Subtle hover translation */}
+                  <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+              <Link href="/case-studies">
+                 {/* Use luxury secondary button class */}
+                <button className="luxury-btn-secondary px-8 py-4 text-lg group"> {/* Adjust padding for button class */}
+                  <Play className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform" />
+                  View Success Stories
+                </button>
+              </Link>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-slate-200">
+            {/* Consider moving stats to the dedicated StatsCounter component area for clarity */}
+            {/* Keeping them here for now if layout requires */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-border/30">
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="text-center group animate-scale-in"
+                  className="text-center group animate-luxury-fade"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <div className="text-emerald-600 group-hover:scale-110 transition-transform">{stat.icon}</div>
-                    <div className="text-2xl md:text-3xl font-bold text-emerald-600">{stat.number}</div>
+                  <div className="flex items-center justify-center gap-2 mb-2 text-primary-button"> {/* Use primary button color for icons/numbers */}
+                     {stat.icon}
+                    <div className="text-3xl md:text-4xl font-bold">{stat.number}</div> {/* Stat number text color */}
                   </div>
-                  <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+                   {/* Stat label text color */}
+                  <div className="text-sm text-foreground/70 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Right Content - Visual */}
-          <div className={`relative ${isVisible ? "animate-fade-in" : "opacity-0"}`} style={{ animationDelay: "0.3s" }}>
-            <div className="relative bg-white rounded-3xl shadow-2xl p-8 border border-emerald-100 hover:shadow-3xl transition-shadow duration-500">
+          <div
+            className={`relative flex justify-center ${isVisible ? "animate-luxury-fade" : "opacity-0"}`} // Ensure image section is centered and animated
+            style={{ animationDelay: "0.3s" }}
+          >
+             {/* Use luxury card class for the main illustration card */}
+            <div className="luxury-card p-8 hover:shadow-xl transition-all duration-500 animate-luxury-glow">
               {/* Business Meeting Image */}
               <div className="relative mb-6 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/business-meeting.webp"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-mraIt5Eu0gcCqPG0ZDWpp3ZwoCjFnR.png" // Use your actual image source
                   alt="Business team collaboration and strategy meeting"
-                  width={500}
-                  height={300}
+                  width={600}
+                  height={400}
                   className="w-full h-auto object-cover"
                   priority
                   loading="eager"
                 />
+                 {/* Optional gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
               </div>
 
               {/* Mock Dashboard */}
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-bold text-slate-900">Business Growth Dashboard</h3>
+                  {/* Update text color for dashboard title */}
+                  <h3 className="text-2xl font-bold text-text-dark">Business Growth Dashboard</h3>
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-emerald-600 font-medium">Live</span>
+                    {/* Use primary color for dot */}
+                    <div className="w-3 h-3 bg-primary-button rounded-full animate-luxury-pulse"></div>
+                    {/* Use primary color for live text */}
+                    <span className="text-sm text-primary-button font-semibold">Live</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100 hover:bg-emerald-100 transition-colors">
-                    <div className="flex items-center gap-2 mb-2">
-                      <TrendingUp className="w-5 h-5 text-emerald-600" />
-                      <span className="text-sm font-medium text-emerald-800">Revenue Growth</span>
+                  {/* Use luxury card for dashboard metric cards */}
+                  <div className="luxury-card p-6 hover:scale-105 transition-transform duration-300">
+                    <div className="flex items-center gap-3 mb-3">
+                      {/* Icon color */}
+                      <TrendingUp className="w-6 h-6 text-primary-button" />
+                      {/* Text color */}
+                      <span className="text-sm font-semibold text-text-dark">Revenue Growth</span>
                     </div>
-                    <div className="text-2xl font-bold text-emerald-700">+247%</div>
+                     {/* Number color */}
+                    <div className="text-3xl font-bold text-text-dark">+247%</div>
                   </div>
 
-                  <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 hover:bg-blue-100 transition-colors">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Star className="w-5 h-5 text-blue-600" />
-                      <span className="text-sm font-medium text-blue-800">Client Satisfaction</span>
+                  {/* Use luxury card for dashboard metric cards */}
+                  <div className="luxury-card p-6 hover:scale-105 transition-transform duration-300">
+                    <div className="flex items-center gap-3 mb-3">
+                       {/* Icon color */}
+                      <Star className="w-6 h-6 text-accent-orange" /> {/* Use orange accent */}
+                       {/* Text color */}
+                      <span className="text-sm font-semibold text-text-dark">Client Satisfaction</span>
                     </div>
-                    <div className="text-2xl font-bold text-blue-700">98.5%</div>
+                     {/* Number color */}
+                    <div className="text-3xl font-bold text-text-dark">98.5%</div>
                   </div>
                 </div>
 
-                <div className="space-y-3">
+                {/* Progress bars */}
+                <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-slate-600">Website Conversion</span>
-                    <span className="text-sm font-semibold text-slate-900">8.4%</span>
+                    <span className="text-sm text-foreground/70 font-medium">Website Conversion</span>
+                    <span className="text-sm font-bold text-primary-button">8.4%</span> {/* Use primary button color */}
                   </div>
-                  <div className="w-full bg-slate-200 rounded-full h-2">
-                    <div className="bg-emerald-500 h-2 rounded-full w-[84%] transition-all duration-1000"></div>
+                  {/* Use border color for track, primary/secondary for gradient fill */}
+                  <div className="w-full bg-border rounded-full h-3 overflow-hidden">
+                    <div className="bg-gradient-to-r from-primary-button to-accent-orange h-3 rounded-full w-[84%] transition-all duration-1000 animate-luxury-shimmer"></div> {/* Gradient fill */}
                   </div>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-slate-600">Lead Generation</span>
-                    <span className="text-sm font-semibold text-slate-900">92%</span>
+                    <span className="text-sm text-foreground/70 font-medium">Lead Generation</span>
+                    <span className="text-sm font-bold text-accent-orange">92%</span> {/* Use accent orange color */}
                   </div>
-                  <div className="w-full bg-slate-200 rounded-full h-2">
+                  {/* Use border color for track, secondary/accent for gradient fill */}
+                  <div className="w-full bg-border rounded-full h-3 overflow-hidden">
                     <div
-                      className="bg-blue-500 h-2 rounded-full w-[92%] transition-all duration-1000"
+                      className="bg-gradient-to-r from-accent-orange to-gradient-green h-3 rounded-full w-[92%] transition-all duration-1000 animate-luxury-shimmer" // Gradient fill
                       style={{ animationDelay: "0.5s" }}
                     ></div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100">
+                <div className="pt-6 border-t border-border/30">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                      <CheckCircle className="w-5 h-5 text-emerald-600" />
+                     {/* Icon wrapper */}
+                    <div className="luxury-icon-wrapper w-10 h-10 rounded-full p-0">
+                       {/* Remove gradient class */}
+                      <CheckCircle className="w-6 h-6 text-white" /> {/* White icon */}
                     </div>
-                    <span className="text-sm text-slate-700">All systems optimized and running smoothly</span>
+                    <span className="text-sm text-foreground/70 font-medium">
+                      All systems optimized and running smoothly
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Floating Elements */}
-            <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-lg p-4 border border-emerald-100 animate-float">
+            <div className="absolute -top-6 -right-6 luxury-card p-6 animate-luxury-float"> {/* Use luxury card */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
-                  <TrendingUp className="w-5 h-5 text-emerald-600" />
+                 {/* Icon wrapper */}
+                <div className="luxury-icon-wrapper w-12 h-12 rounded-full p-0">
+                   {/* Remove gradient class */}
+                  <TrendingUp className="w-6 h-6 text-white" /> {/* White icon */}
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-slate-900">ROI Increase</div>
-                  <div className="text-lg font-bold text-emerald-600">+340%</div>
+                   {/* Text color */}
+                  <div className="text-sm font-semibold text-text-dark">ROI Increase</div>
+                   {/* Number color */}
+                  <div className="text-xl font-bold text-text-dark">+340%</div>
                 </div>
               </div>
             </div>
 
             <div
-              className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-lg p-4 border border-blue-100 animate-float"
+              className="absolute -bottom-6 -left-6 luxury-card p-6 animate-luxury-float" // Use luxury card
               style={{ animationDelay: "1s" }}
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Star className="w-5 h-5 text-blue-600" />
+                 {/* Icon wrapper */}
+                <div className="luxury-icon-wrapper w-12 h-12 rounded-full p-0">
+                   {/* Remove gradient class */}
+                  <Star className="w-6 h-6 text-white" /> {/* White icon */}
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-slate-900">Client Rating</div>
-                  <div className="text-lg font-bold text-blue-600">4.9/5</div>
+                   {/* Text color */}
+                  <div className="text-sm font-semibold text-text-dark">Client Rating</div>
+                   {/* Number color */}
+                  <div className="text-xl font-bold text-text-dark">4.9/5</div>
                 </div>
               </div>
             </div>

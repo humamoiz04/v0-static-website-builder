@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button" // Assuming this is your custom Button
 import {
   MapPin,
   Phone,
@@ -52,22 +52,24 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="luxury-cta-section"> {/* Use cta section class for dark background */}
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
+               {/* Luxury button class for logo circle */}
+              <div className="luxury-button w-10 h-10 rounded-xl flex items-center justify-center p-0">
                 <span className="text-white font-bold text-xl">M</span>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+              {/* Use text dark for logo text or keep gradient subtle */}
+              <span className="text-2xl font-bold text-white">
                 MH Digital Solutions
               </span>
             </Link>
 
-            <p className="text-slate-300 mb-6 leading-relaxed">
+            <p className="text-white/80 mb-6 leading-relaxed"> {/* Use white/80 for description */}
               All-in-One Business Solutions from Startup to Scale-Up. We fix, build & grow your business with proven
               strategies and 50% cost reduction through global talent solutions.
             </p>
@@ -75,32 +77,46 @@ export default function Footer() {
             {/* Trust Indicators */}
             <div className="flex items-center gap-4 mb-6">
               <div className="flex items-center gap-2">
-                <Star className="w-5 h-5 text-yellow-400" />
-                <span className="text-sm text-slate-300">4.9/5 Rating</span>
+                <Star className="w-5 h-5 text-primary-button" /> {/* Use primary button color */}
+                <span className="text-white/80 text-sm">4.9/5 Rating</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-emerald-400" />
-                <span className="text-sm text-slate-300">Verified</span>
+                <Shield className="w-5 h-5 text-primary-button" /> {/* Use primary button color */}
+                <span className="text-white/80 text-sm">Verified</span>
               </div>
               <div className="flex items-center gap-2">
-                <Award className="w-5 h-5 text-blue-400" />
-                <span className="text-sm text-slate-300">Award Winner</span>
+                <Award className="w-5 h-5 text-primary-button" /> {/* Use primary button color */}
+                <span className="text-white/80 text-sm">Award Winner</span>
               </div>
             </div>
 
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-emerald-400" />
-                <span className="text-slate-300">+1 (555) 123-4567</span>
+                <Phone className="w-5 h-5 text-primary-button" /> {/* Use primary button color */}
+                <a href="tel:+17575504040" className="text-white/80 hover:text-primary-button transition-colors">
+                  +1 (757) 550-4040
+                </a>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-emerald-400" />
-                <span className="text-slate-300">hello@mhdigitalsolutions.com</span>
+                 {/* Use primary button color or green if keeping WhatsApp branding */}
+                <Phone className="w-5 h-5 text-green-400" />
+                <a href="https://wa.me/17075822255" className="text-white/80 hover:text-green-400 transition-colors">
+                  +1 (707) 582-2255 (WhatsApp)
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-primary-button" /> {/* Use primary button color */}
+                <a
+                  href="mailto:hello@mhdigitalsolutions.com"
+                  className="text-white/80 hover:text-primary-button transition-colors"
+                >
+                  hello@mhdigitalsolutions.com
+                </a>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-emerald-400 mt-0.5" />
-                <span className="text-slate-300">
+                <MapPin className="w-5 h-5 text-primary-button mt-0.5" /> {/* Use primary button color */}
+                <span className="text-white/80">
                   123 Business Ave, Suite 100
                   <br />
                   New York, NY 10001, USA
@@ -111,11 +127,11 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Services</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">Services</h3> {/* Ensure white text */}
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <Link href={service.href} className="text-slate-300 hover:text-emerald-400 transition-colors text-sm">
+                  <Link href={service.href} className="text-white/80 hover:text-primary-button transition-colors text-sm"> {/* Use white/80 text and primary button color on hover */}
                     {service.name}
                   </Link>
                 </li>
@@ -125,11 +141,11 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">Company</h3> {/* Ensure white text */}
             <ul className="space-y-3">
               {company.map((item, index) => (
                 <li key={index}>
-                  <Link href={item.href} className="text-slate-300 hover:text-emerald-400 transition-colors text-sm">
+                  <Link href={item.href} className="text-white/80 hover:text-primary-button transition-colors text-sm"> {/* Use white/80 text and primary button color on hover */}
                     {item.name}
                   </Link>
                 </li>
@@ -139,14 +155,11 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">Resources</h3> {/* Ensure white text */}
             <ul className="space-y-3">
               {resources.map((resource, index) => (
                 <li key={index}>
-                  <Link
-                    href={resource.href}
-                    className="text-slate-300 hover:text-emerald-400 transition-colors text-sm"
-                  >
+                  <Link href={resource.href} className="text-white/80 hover:text-primary-button transition-colors text-sm"> {/* Use white/80 text and primary button color on hover */}
                     {resource.name}
                   </Link>
                 </li>
@@ -156,11 +169,11 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-slate-700">
+        <div className="mt-12 pt-8 border-t border-white/20"> {/* Use white border */}
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-2">Get Business Growth Tips</h3>
-              <p className="text-slate-300">
+              <h3 className="text-2xl font-bold text-white mb-2">Get Business Growth Tips</h3> {/* Ensure white text */}
+              <p className="text-white/80">
                 Subscribe to our newsletter for the latest insights on cost reduction, global talent, and business
                 optimization.
               </p>
@@ -169,23 +182,25 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                 // Style input for dark background
+                className="flex-1 px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-primary-button"
               />
-              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3">
+               {/* Use luxury button */}
+              <button className="luxury-button px-6 py-3">
                 Subscribe
                 <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-slate-700">
+      <div className="border-t border-white/20"> {/* Use white border */}
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
-            <div className="text-slate-400 text-sm">© 2024 MH Digital Solutions. All rights reserved.</div>
+            <div className="text-white/60 text-sm">© 2024 MH Digital Solutions. All rights reserved.</div> {/* Use white/60 text */}
 
             {/* Legal Links */}
             <div className="flex flex-wrap gap-6">
@@ -193,7 +208,7 @@ export default function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-slate-400 hover:text-emerald-400 transition-colors text-sm"
+                  className="text-white/60 hover:text-primary-button transition-colors text-sm" // Use white/60 text and primary button color on hover
                 >
                   {item.name}
                 </Link>
@@ -203,32 +218,40 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex items-center gap-4">
               <Link
-                href="https://linkedin.com/company/mhdigitalsolutions"
-                className="text-slate-400 hover:text-emerald-400 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </Link>
-              <Link
-                href="https://twitter.com/mhdigitalsolutions"
-                className="text-slate-400 hover:text-emerald-400 transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </Link>
-              <Link
-                href="https://facebook.com/mhdigitalsolutions"
-                className="text-slate-400 hover:text-emerald-400 transition-colors"
+                href="https://www.facebook.com/share/1C6iWHe1fC/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-primary-button transition-colors" // Use white/60 text and primary button color on hover
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </Link>
               <Link
-                href="https://instagram.com/mhdigitalsolutions"
-                className="text-slate-400 hover:text-emerald-400 transition-colors"
+                href="https://www.instagram.com/mh_digitalsolutions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-primary-button transition-colors" // Use white/60 text and primary button color on hover
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
+              </Link>
+              <Link
+                href="https://x.com/moiz_khan845"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-primary-button transition-colors" // Use white/60 text and primary button color on hover
+                aria-label="Twitter"
+              >
+                <Twitter className="w-5 h-5" />
+              </Link>
+              <Link
+                href="https://linkedin.com/company/mhdigitalsolutions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-primary-button transition-colors" // Use white/60 text and primary button color on hover
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
               </Link>
             </div>
           </div>

@@ -1,13 +1,16 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Poppins } from "next/font/google" // Import Poppins
 import "./globals.css"
-import Navigation from "@/components/navigation"
-import Footer from "@/components/footer"
+import Navigation from "@/components/navigation" // Assuming updated Navigation component
+import Footer from "@/components/footer" // Assuming updated Footer component
+import WhatsAppChat from "@/components/whatsapp-chat" // Assuming updated WhatsAppChat component
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' }) // Define as variable
+const poppins = Poppins({ subsets: ["latin"], weight: ['400', '600', '700'], variable: '--font-poppins' }) // Define Poppins as variable
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.mhdigitalsolution.com"),
   title: {
     default: "MH Digital Solutions - All-in-One Business Solutions | From Startup to Scale-Up",
     template: "%s | MH Digital Solutions",
@@ -25,6 +28,10 @@ export const metadata: Metadata = {
     "business cost reduction 50%",
     "global talent solutions",
     "affordable business solutions",
+    "business growth consultant",
+    "small business problem solver",
+    "business registration and branding services",
+    "fix my business operations",
   ],
   authors: [{ name: "MH Digital Solutions" }],
   creator: "MH Digital Solutions",
@@ -34,23 +41,31 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://mhdigitalsolutions.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://mhdigitalsolutions.com",
+    url: "https://www.mhdigitalsolution.com",
     title: "MH Digital Solutions - All-in-One Business Solutions",
     description: "From Startup to Scale-Up, Struggling to Thriving—We Fix, Build & Grow Your Business!",
     siteName: "MH Digital Solutions",
+    images: [
+      {
+        url: "/images/og-image.webp", // Ensure this image exists and matches your new brand style
+        width: 1200,
+        height: 630,
+        alt: "MH Digital Solutions - Business Transformation Experts",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "MH Digital Solutions - All-in-One Business Solutions",
     description: "From Startup to Scale-Up, Struggling to Thriving—We Fix, Build & Grow Your Business!",
-    creator: "@mhdigitalsolutions",
+    creator: "@moiz_khan845", // Use your actual Twitter handle
+    images: ["/images/og-image.webp"], // Ensure this image exists
   },
   robots: {
     index: true,
@@ -63,7 +78,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-    generator: 'v0.dev'
+  verification: {
+    google: "your-google-verification-code", // Replace with your actual code
+  },
+    generator: 'v0.dev' // Keep or remove as needed
 }
 
 export default function RootLayout({
@@ -74,8 +92,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Google Fonts Links - Add these */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" /> {/* Link Inter and Poppins */}
+
+        <link rel="canonical" href="https://www.mhdigitalsolution.com" />
+        {/* Schema Markup - Looks correct */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -84,27 +107,64 @@ export default function RootLayout({
               "@type": "Organization",
               name: "MH Digital Solutions",
               description: "All-in-One Business Solutions from Startup to Scale-Up",
-              url: "https://mhdigitalsolutions.com",
-              logo: "https://mhdigitalsolutions.com/logo.png",
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+1-555-0123",
-                contactType: "customer service",
-                availableLanguage: "English",
-              },
-              sameAs: ["https://linkedin.com/company/mhdigitalsolutions", "https://twitter.com/mhdigitalsolutions"],
+              url: "https://www.mhdigitalsolution.com",
+              logo: "https://www.mhdigitalsolution.com/images/mh-logo.webp", // Ensure this logo exists and matches brand
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+1-757-550-4040",
+                  contactType: "customer service",
+                  availableLanguage: "English",
+                },
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+1-707-582-2255",
+                  contactType: "WhatsApp",
+                  availableLanguage: "English",
+                },
+              ],
+              sameAs: [
+                "https://www.facebook.com/share/1C6iWHe1fC/", // Verify URLs
+                "https://www.instagram.com/mh_digitalsolutions", // Verify URLs
+                "https://x.com/moiz_khan845", // Verify URLs
+                "https://linkedin.com/company/mhdigitalsolutions", // Add LinkedIn
+              ],
+               // Update address if necessary
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "US",
+                addressRegion: "NY",
+                addressLocality: "New York",
+                streetAddress: "123 Business Ave, Suite 100",
+                postalCode: "10001",
               },
+              // Update founder name
+              founder: {
+                "@type": "Person",
+                name: "Your Founder Name", // Replace with actual founder name
+              },
+               // Update founding date
+              foundingDate: "Your Founding Date", // Replace with actual date (e.g., "2014-01-01")
+              numberOfEmployees: "50+", // Update count if necessary
+              areaServed: "United States",
+              serviceType: [
+                "Business Consulting",
+                "Digital Marketing",
+                "E-commerce Development",
+                "Global Talent Solutions",
+                "Legal & Compliance",
+                "Premium Business Solutions",
+              ],
             }),
           }}
         />
       </head>
-      <body className={inter.className}>
-        <Navigation />
+      {/* Apply font variables to body class */}
+      <body className={`${inter.variable} ${poppins.variable}`}> {/* Use font variables */}
+        <Navigation /> {/* Ensure Navigation uses updated styles */}
         <main>{children}</main>
-        <Footer />
+        <Footer /> {/* Ensure Footer uses updated styles */}
+        <WhatsAppChat /> {/* Ensure WhatsAppChat uses updated styles */}
       </body>
     </html>
   )
