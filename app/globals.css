@@ -1,0 +1,322 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- NEW COLOR PALETTE BASED ON IMAGE 2 --- */
+/* Hex codes: #f6fffe, #ffeefe, #e6ffc9, #300c29, #ffcfcd, #ff852f */
+/* Mapping these to HSL for Tailwind variables */
+
+@layer base {
+  :root {
+    /* Base palette from Image 2 hex codes */
+    --background-base: 246 255 254;   /* #f6fffe */
+    --gradient-pink: 255 238 238;     /* #ffeefe */
+    --gradient-green: 230 255 201;    /* #e6ffc9 */
+    --text-dark: 48 12 41;           /* #300c29 */
+    --primary-button: 255 207 205;   /* #ffcfcd */
+    --accent-orange: 255 133 47;     /* #ff852f - Used for some gradients/accents */
+    --accent-red-dot: 255 0 0;       /* Red for dots */
+
+    /* Functional colors mapped to new palette */
+    --background: var(--background-base);
+    --foreground: var(--text-dark);
+    --card: 0 0% 100%; /* Keep cards pure white or close to it as in image */
+    --card-foreground: var(--text-dark);
+
+    --primary: var(--primary-button); /* Primary interactive color = Pink button color */
+    --primary-foreground: var(--text-dark); /* Text on primary button = Dark text color */
+
+    --secondary: var(--accent-orange); /* Using orange as a secondary accent/gradient color */
+    --secondary-foreground: var(--text-dark);
+
+    --accent: var(--gradient-green); /* Using pale green tint as an accent base */
+    --accent-foreground: var(--text-dark);
+
+    --destructive: 0 84.2% 60.2%; /* Keep default destructive or define new */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 230 230 230; /* Light grey border color */
+    --input: 230 230 230; /* Light grey input border */
+    --ring: 255 207 205; /* Ring color often matches primary/focus */
+
+    /* These might be needed if used by Shadcn components or custom classes */
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--text-dark);
+    --muted: 0 0% 96.1%; /* Keep default muted or define new */
+    --muted-foreground: 0 0% 45.1%; /* Keep default muted-foreground or define new */
+
+
+    /* --- REMOVED DARK MODE --- */
+    /* The entire .dark {} block is removed */
+
+    /* Other variables */
+    --radius: 0.75rem; /* Slightly less rounded corners than original luxury */
+
+    /* Sidebar variables (adjusting to new palette if sidebar is used) */
+    --sidebar-background: var(--background-base);
+    --sidebar-foreground: var(--text-dark);
+    --sidebar-primary: var(--primary-button);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--gradient-green);
+    --sidebar-accent-foreground: var(--text-dark);
+    --sidebar-border: 230 230 230;
+    --sidebar-ring: 255 207 205; /* Matching primary button */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    /* Font family matching image (Poppins/Inter) */
+    font-family: "Inter", system-ui, sans-serif; /* Default body font */
+    @apply bg-background text-foreground;
+
+    /* Background Gradient matching the second image */
+     background: radial-gradient(
+      at 50% 0%,
+      rgba(var(--gradient-pink), 0.3) 0%,
+      transparent 30%
+    ),
+    radial-gradient(
+      at 100% 50%,
+      rgba(var(--gradient-green), 0.3) 0%,
+      transparent 30%
+    ),
+    radial-gradient(
+      at 0% 70%,
+      rgba(var(--gradient-pink), 0.2) 0%,
+      transparent 30%
+    ),
+    linear-gradient(
+      to bottom,
+      rgb(var(--background-base)) 0%,
+      rgb(var(--background-base)) 100%
+    );
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Define font variables if using Next.js font optimization */
+  /* Example:
+  :root {
+    --font-sans: var(--font-inter);
+    --font-heading: var(--font-poppins);
+  }
+  body { font-family: var(--font-sans); }
+  .luxury-heading { font-family: var(--font-heading); }
+  etc.
+  */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* --- NEW/UPDATED CUSTOM CLASSES BASED ON IMAGE 2 AESTHETIC --- */
+
+@layer components {
+  /* Typography - Using Poppins for specific headings */
+   .luxury-heading {
+    /* Font looks like Poppins or similar bold Sans */
+    font-family: "Poppins", sans-serif;
+    @apply text-4xl md:text-5xl font-bold tracking-tight leading-tight;
+    color: rgb(var(--text-dark)); /* Solid dark color from image */
+  }
+
+   .luxury-subheading {
+    @apply font-sans text-lg md:text-xl font-light tracking-wide;
+    color: rgb(var(--taupe)); /* Dark text color */
+  }
+
+  /* Image 2 Card Style */
+  .luxury-card {
+    @apply relative overflow-hidden rounded-xl p-6; /* Rounded corners, padding */
+    background: rgb(var(--card)); /* White or near-white background */
+    border: 1px solid rgba(var(--primary-button), 0.3); /* Subtle border with pink accent */
+    box-shadow:
+      0 5px 15px rgba(var(--taupe), 0.05); /* Subtle shadow */
+    transition: all 0.3s ease-out; /* Simple transition */
+  }
+
+  .luxury-card:hover {
+    @apply -translate-y-1; /* Slight lift on hover */
+    box-shadow:
+      0 8px 20px rgba(var(--taupe), 0.08); /* Slightly more prominent shadow */
+  }
+
+  /* Card icon styling */
+  .luxury-icon-wrapper {
+    @apply p-3 rounded-full mb-4;
+    background: rgb(var(--primary)); /* Pink background for icons */
+    color: rgb(var(--primary-foreground)); /* Dark text/icon on pink */
+    display: inline-flex; /* Needed for padding/rounding */
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Image 2 Primary Button Style */
+  .luxury-button {
+    @apply relative overflow-hidden rounded-md px-6 py-3 font-sans font-semibold tracking-wide inline-flex items-center justify-center; /* Rounded corners match image, padding/flex added */
+    background-color: rgb(var(--primary)); /* Solid pink background */
+    color: rgb(var(--primary-foreground)); /* Dark text color */
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-out, box-shadow 0.3s ease-in-out;
+    box-shadow:
+      0 3px 10px rgba(var(--primary), 0.3); /* Shadow based on button color */
+  }
+
+  .luxury-button:hover {
+    background-color: rgba(var(--primary), 0.9); /* Slight opacity change or darker shade */
+    transform: translateY(-1px);
+    box-shadow:
+      0 5px 12px rgba(var(--primary), 0.4);
+  }
+
+  /* Image 2 Secondary Button style (e.g., View Success Stories) */
+  .luxury-btn-secondary {
+    @apply relative overflow-hidden rounded-md px-6 py-3 font-sans font-semibold tracking-wide inline-flex items-center justify-center;
+    background-color: transparent; /* Transparent background */
+    border: 1px solid rgb(var(--taupe)); /* Dark border */
+    color: rgb(var(--taupe)); /* Dark text color */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-out;
+  }
+
+  .luxury-btn-secondary:hover {
+    background-color: rgb(var(--taupe)); /* Dark background on hover */
+    color: rgb(var(--background-base)); /* Light text on hover */
+    transform: translateY(-1px);
+  }
+
+  /* Image 2 Badge Style */
+  .luxury-badge {
+     @apply inline-flex items-center rounded-full border-transparent px-4 py-1.5 text-sm font-medium;
+     background-color: rgb(var(--primary-button)); /* Pink background */
+     color: rgb(var(--text-dark)); /* Dark text */
+     box-shadow: 0 1px 5px rgba(var(--primary-button), 0.2);
+  }
+
+
+  /* Image 2 Input Style (Form) */
+  .luxury-input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+     background-color: rgb(var(--card)); /* White background */
+     border-color: rgba(var(--primary-button), 0.5); /* Border with pink tint */
+     box-shadow: inset 0 1px 3px rgba(var(--taupe), 0.05);
+     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .luxury-input:focus-visible {
+     border-color: rgb(var(--primary));
+     box-shadow: inset 0 1px 3px rgba(var(--taupe), 0.05), 0 0 0 3px rgba(var(--primary), 0.2);
+  }
+
+
+  /* Specific Section Backgrounds (Image 2 style) */
+  .luxury-stats-section {
+      @apply py-12 md:py-16;
+      background: linear-gradient(
+          to right,
+          rgba(var(--gradient-pink), 0.2) 0%,
+          rgba(var(--gradient-green), 0.2) 100%
+      );
+  }
+
+   .luxury-cta-section {
+       @apply py-16 md:py-20;
+       background: linear-gradient(
+            135deg,
+            rgba(var(--text-dark), 0.9) 0%,
+            rgba(var(--text-dark), 0.8) 100% /* Example dark gradient for CTAs/Footer */
+       );
+       color: white; /* White text on dark background */
+   }
+
+   /* Problem Section Specifics */
+   .luxury-problem-header h2 {
+       font-family: "Poppins", sans-serif;
+       @apply text-3xl md:text-4xl font-bold mb-4;
+       color: rgb(var(--text-dark));
+       /* Underline effect from image */
+       position: relative;
+       display: inline-block;
+   }
+
+   .luxury-problem-header h2::after {
+       content: '';
+       position: absolute;
+       left: 50%;
+       bottom: -10px;
+       transform: translateX(-50%);
+       width: 60px; /* Underline width */
+       height: 4px; /* Underline thickness */
+       background-color: rgb(var(--primary-button)); /* Pink color */
+       border-radius: 2px;
+   }
+
+
+  /* Navigation Styles */
+  .luxury-nav {
+    @apply backdrop-blur-md bg-opacity-80; /* Subtle blur */
+    background: rgba(var(--card), 0.8); /* Semi-transparent white/card background */
+    border-bottom: 1px solid rgba(var(--border), 0.5); /* Subtle border */
+  }
+   .luxury-nav-scrolled {
+     @apply backdrop-blur-lg bg-opacity-90 shadow-md;
+     background: rgba(var(--card), 0.9);
+     border-bottom: 1px solid rgba(var(--border), 0.8);
+   }
+
+
+  /* Animations from previous step (adjusted if needed) */
+  .animate-luxury-fade {
+    animation: luxuryFade 1s ease-out forwards; /* Use keyframe name */
+  }
+  .animate-luxury-float {
+    animation: luxuryFloat 8s ease-in-out infinite; /* Use keyframe name */
+  }
+  .animate-luxury-pulse { /* Example simple pulse */
+    animation: luxuryPulse 2s ease-in-out infinite;
+  }
+   .animate-luxury-glow { /* Example subtle glow */
+     animation: luxuryGlow 3s ease-in-out infinite alternate;
+   }
+   .animate-slide-up {
+       animation: slideUp 0.7s ease-out forwards;
+       opacity: 0;
+   }
+   .animate-scale-in {
+        animation: scaleIn 0.6s ease-out forwards;
+        opacity: 0;
+   }
+
+   /* New/Adjusted Keyframes */
+   @keyframes luxuryFade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+   }
+
+   @keyframes luxuryFloat {
+      0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+      50% { transform: translateY(-10px) rotate(0.5deg); }
+   }
+
+   @keyframes luxuryPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+   }
+
+   @keyframes luxuryGlow {
+       0%, 100% { box-shadow: 0 0 10px rgba(var(--primary-button), 0.3); }
+       50% { box-shadow: 0 0 20px rgba(var(--primary-button), 0.5); }
+   }
+   @keyframes slideUp {
+       from { opacity: 0; transform: translateY(30px); }
+       to { opacity: 1; transform: translateY(0); }
+   }
+   @keyframes scaleIn {
+       from { opacity: 0; transform: scale(0.95); }
+       to { opacity: 1; transform: scale(1); }
+   }
