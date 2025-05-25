@@ -1,13 +1,13 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card" // Assuming this is your custom Card
-import { Badge } from "@/components/ui/badge" // Assuming this is your custom Badge
-// Assuming Button is styled by luxury-button class
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { ArrowRight, AlertTriangle, CheckCircle, TrendingUp } from "lucide-react"
 
 export default function ProblemsSolved() {
   const problemCategories = [
     {
       category: "Business Consultation & Strategy",
-      color: "from-coral to-orange", // Consider removing or updating gradients
+      color: "from-coral to-orange",
       problems: [
         {
           problem: "I started a café but customers don't return.",
@@ -23,11 +23,11 @@ export default function ProblemsSolved() {
     },
     {
       category: "Digital Services",
-      color: "from-purple to-pink", // Consider removing or updating gradients
+      color: "from-purple to-pink",
       problems: [
         {
           problem: "My website gets traffic but no one calls.",
-          solution: "Redesign UI/UX to highlight your phone number + add a WhatsApp chat button.", // WhatsApp chat button specifically mentioned - if not using, remove
+          solution: "Redesign UI/UX to highlight your phone number + add a WhatsApp chat button.",
           result: "Phone inquiries increased by 180%",
         },
         {
@@ -39,7 +39,7 @@ export default function ProblemsSolved() {
     },
     {
       category: "E-Commerce Solutions",
-      color: "from-coral to-pink", // Consider removing or updating gradients
+      color: "from-coral to-pink",
       problems: [
         {
           problem: "My Shopify store gets traffic but no sales!",
@@ -54,8 +54,8 @@ export default function ProblemsSolved() {
       ],
     },
     {
-      category: "Organic Marketing", // Added Organic Marketing category
-      color: "from-orange to-coral", // Consider removing or updating gradients
+      category: "Organic Marketing",
+      color: "from-orange to-coral",
       problems: [
         {
           problem: "I post daily on Instagram but get no sales.",
@@ -67,7 +67,7 @@ export default function ProblemsSolved() {
     },
     {
       category: "Business Optimization",
-      color: "from-purple to-coral", // Consider removing or updating gradients
+      color: "from-purple to-coral",
       problems: [
         {
           problem: "My restaurant has empty tables but customers wait because hostess is overwhelmed.",
@@ -76,43 +76,23 @@ export default function ProblemsSolved() {
         },
         {
           problem: "My real estate agency loses leads who call after hours.",
-          solution: "AI chatbot on WhatsApp to answer FAQs and schedule viewings 24/7.", // WhatsApp chatbot specifically mentioned - if not using, remove
+          solution: "AI chatbot on WhatsApp to answer FAQs and schedule viewings 24/7.",
           result: "Lead capture increased by 85%",
         },
       ],
     },
-     // Add category for Global Talent & Cost Savings problems
-     {
-       category: "Global Talent & Cost Savings",
-       color: "from-green-500 to-teal-500", // Example gradient
-       problems: [
-         {
-           problem: "High US customer service costs are eating into profits.",
-           solution: "Leverage our vetted global talent team for high-quality customer support at 50% less cost.",
-           result: "Customer service costs reduced by 55%, support coverage increased to 24/7.",
-         },
-         {
-           problem: "Hiring local staff for admin tasks is too expensive.",
-           solution: "Access skilled administrative professionals from our global network for efficient, cost-effective support.",
-           result: "Administrative labor costs decreased by 45%.",
-         },
-       ],
-     },
   ]
 
   return (
-    <section className="py-24 px-4 bg-background"> {/* Use background variable */}
+    <section className="py-24 px-4 bg-gradient-to-br from-[#370034] via-pink to-cream animate-fade-in">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16 animate-slide-up">
-          <Badge className="luxury-badge mb-6 animate-luxury-pulse"> {/* Use luxury badge */}
+          <Badge className="mb-6 bg-coral text-white hover:bg-coral/90 px-6 py-2 text-lg font-medium animate-bounce">
             Real Problems, Real Solutions
           </Badge>
-           {/* Use luxury problem header h2 style */}
-          <div className="luxury-problem-header">
-             <h2>Problems We Solve Daily</h2>
-          </div>
-          <p className="text-xl text-foreground/80 max-w-3xl mx-auto leading-relaxed"> {/* Use text-foreground */}
+          <h2 className="text-4xl md:text-6xl font-bold text-gray mb-6 animate-glow">Problems We Solve Daily</h2>
+          <p className="text-xl text-gray/80 max-w-3xl mx-auto leading-relaxed">
             See how we've transformed businesses facing the exact same challenges you might be experiencing.
           </p>
         </div>
@@ -120,9 +100,8 @@ export default function ProblemsSolved() {
         {/* Problems by Category */}
         <div className="space-y-12">
           {problemCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="animate-slide-up" style={{ animationDelay: `${categoryIndex * 0.1}s` }}> {/* Reduced delay */}
-               {/* Use dark text for category title */}
-              <h3 className="text-2xl md:text-3xl font-bold text-text-dark mb-8 text-center">
+            <div key={categoryIndex} className="animate-slide-up" style={{ animationDelay: `${categoryIndex * 0.2}s` }}>
+              <h3 className="text-2xl md:text-3xl font-bold text-gray mb-8 text-center animate-glow">
                 {category.category}
               </h3>
 
@@ -130,19 +109,15 @@ export default function ProblemsSolved() {
                 {category.problems.map((item, problemIndex) => (
                   <Card
                     key={problemIndex}
-                    className="luxury-card hover:shadow-coral-glow transition-all duration-500 animate-scale-in" // Use luxury card, add glow on hover
-                    style={{ animationDelay: `${problemIndex * 0.1}s` }} // Add animation delay per card
+                    className="bg-white/90 backdrop-blur-sm border-pink/20 hover:bg-white hover:shadow-coral-glow transition-all duration-500 animate-scale-in group"
                   >
                     <CardHeader className="pb-4">
                       <div className="flex items-start gap-4">
-                         {/* Problem Icon Wrapper - Use solid color or subtle gradient */}
-                        <div className="p-2 bg-red-500/20 rounded-lg"> {/* Keep original red if needed */}
-                           <AlertTriangle className="w-6 h-6 text-red-500" /> {/* Keep original red if needed */}
+                        <div className="p-2 bg-red-500/20 rounded-lg animate-wiggle">
+                          <AlertTriangle className="w-6 h-6 text-red-500" />
                         </div>
                         <div className="flex-1">
-                           {/* Dark text */}
-                          <CardTitle className="text-text-dark text-lg mb-2">Problem:</CardTitle>
-                           {/* Red text for problem description */}
+                          <CardTitle className="text-gray text-lg mb-2">Problem:</CardTitle>
                           <CardDescription className="text-red-600 text-base italic">"{item.problem}"</CardDescription>
                         </div>
                       </div>
@@ -150,32 +125,29 @@ export default function ProblemsSolved() {
 
                     <CardContent className="space-y-4">
                       <div className="flex items-start gap-4">
-                         {/* Solution Icon Wrapper - Use pink/primary color */}
-                        <div className="p-2 bg-primary-button/50 rounded-lg animate-luxury-pulse"> {/* Use primary button color */}
-                          <CheckCircle className="w-6 h-6 text-primary-button" /> {/* Use primary button color */}
+                        <div className="p-2 bg-coral/20 rounded-lg animate-pulse">
+                          <CheckCircle className="w-6 h-6 text-coral" />
                         </div>
                         <div className="flex-1">
-                          <h4 className="text-text-dark font-semibold mb-2">Our Solution:</h4> {/* Use dark text */}
-                          <p className="text-foreground/80">{item.solution}</p> {/* Use text-foreground */}
+                          <h4 className="text-coral font-semibold mb-2">Our Solution:</h4>
+                          <p className="text-gray/80">{item.solution}</p>
                         </div>
                       </div>
 
                       <div className="flex items-start gap-4">
-                         {/* Result Icon Wrapper - Use orange/accent color */}
-                        <div className="p-2 bg-accent-orange/50 rounded-lg animate-luxury-glow"> {/* Use accent orange color */}
-                          <TrendingUp className="w-6 h-6 text-white" /> {/* White icon */}
+                        <div className="p-2 bg-gradient-to-r from-coral to-orange rounded-lg animate-glow">
+                          <TrendingUp className="w-6 h-6 text-white" />
                         </div>
                         <div className="flex-1">
-                          <h4 className="text-text-dark font-semibold mb-2">Result:</h4> {/* Use dark text */}
-                          <p className="text-text-dark font-medium">{item.result}</p> {/* Use dark text */}
+                          <h4 className="text-purple font-semibold mb-2">Result:</h4>
+                          <p className="text-gray font-medium">{item.result}</p>
                         </div>
                       </div>
 
-                       {/* Use luxury button with gradient */}
-                      <button className="luxury-button w-full mt-4 bg-gradient-to-r from-accent-orange to-primary-button hover:from-primary-button hover:to-accent-orange text-white font-semibold py-3 rounded-lg transition-all duration-300 group-hover:scale-105 animate-luxury-pulse"> {/* Gradient button */}
+                      <Button className="w-full mt-4 bg-gradient-to-r from-coral to-orange hover:from-orange hover:to-coral text-white font-semibold py-3 rounded-lg transition-all duration-300 group-hover:scale-105 animate-float">
                         Get Similar Results
                         <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </button>
+                      </Button>
                     </CardContent>
                   </Card>
                 ))}
@@ -184,13 +156,12 @@ export default function ProblemsSolved() {
           ))}
         </div>
 
-        {/* CTA Section - Use a different class if not the dark background type */}
+        {/* CTA Section */}
         <div className="text-center mt-16 animate-slide-up">
-           {/* Use luxury button with gradient */}
-          <button className="luxury-button bg-gradient-to-r from-accent-orange to-primary-button hover:from-primary-button hover:to-accent-orange text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 hover:scale-105 animate-luxury-glow"> {/* Gradient button */}
+          <Button className="bg-gradient-to-r from-coral to-orange hover:from-orange hover:to-coral text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 hover:scale-105 animate-glow">
             Solve Your Business Problems Today
             <ArrowRight className="ml-2 w-5 h-5" />
-          </button>
+          </Button>
         </div>
       </div>
     </section>

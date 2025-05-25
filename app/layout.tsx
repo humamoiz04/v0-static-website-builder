@@ -1,13 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Poppins } from "next/font/google" // Import Poppins
+import { Inter } from "next/font/google"
 import "./globals.css"
-import Navigation from "@/components/navigation" // Assuming updated Navigation component
-import Footer from "@/components/footer" // Assuming updated Footer component
-import WhatsAppChat from "@/components/whatsapp-chat" // Assuming updated WhatsAppChat component
+import Navigation from "@/components/navigation"
+import Footer from "@/components/footer"
+import WhatsAppChat from "@/components/whatsapp-chat"
 
-const inter = Inter({ subsets: ["latin"], variable: '--font-inter' }) // Define as variable
-const poppins = Poppins({ subsets: ["latin"], weight: ['400', '600', '700'], variable: '--font-poppins' }) // Define Poppins as variable
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.mhdigitalsolution.com"),
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "MH Digital Solutions",
     images: [
       {
-        url: "/images/og-image.webp", // Ensure this image exists and matches your new brand style
+        url: "/images/og-image.webp",
         width: 1200,
         height: 630,
         alt: "MH Digital Solutions - Business Transformation Experts",
@@ -64,8 +63,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MH Digital Solutions - All-in-One Business Solutions",
     description: "From Startup to Scale-Up, Struggling to Thriving—We Fix, Build & Grow Your Business!",
-    creator: "@moiz_khan845", // Use your actual Twitter handle
-    images: ["/images/og-image.webp"], // Ensure this image exists
+    creator: "@moiz_khan845",
+    images: ["/images/og-image.webp"],
   },
   robots: {
     index: true,
@@ -79,9 +78,9 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code", // Replace with your actual code
+    google: "your-google-verification-code",
   },
-    generator: 'v0.dev' // Keep or remove as needed
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -92,13 +91,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        {/* Google Fonts Links - Add these */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" /> {/* Link Inter and Poppins */}
-
         <link rel="canonical" href="https://www.mhdigitalsolution.com" />
-        {/* Schema Markup - Looks correct */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -108,7 +103,7 @@ export default function RootLayout({
               name: "MH Digital Solutions",
               description: "All-in-One Business Solutions from Startup to Scale-Up",
               url: "https://www.mhdigitalsolution.com",
-              logo: "https://www.mhdigitalsolution.com/images/mh-logo.webp", // Ensure this logo exists and matches brand
+              logo: "https://www.mhdigitalsolution.com/images/mh-logo.webp",
               contactPoint: [
                 {
                   "@type": "ContactPoint",
@@ -124,12 +119,10 @@ export default function RootLayout({
                 },
               ],
               sameAs: [
-                "https://www.facebook.com/share/1C6iWHe1fC/", // Verify URLs
-                "https://www.instagram.com/mh_digitalsolutions", // Verify URLs
-                "https://x.com/moiz_khan845", // Verify URLs
-                "https://linkedin.com/company/mhdigitalsolutions", // Add LinkedIn
+                "https://www.facebook.com/share/1C6iWHe1fC/",
+                "https://www.instagram.com/mh_digitalsolutions",
+                "https://x.com/moiz_khan845",
               ],
-               // Update address if necessary
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "US",
@@ -138,14 +131,12 @@ export default function RootLayout({
                 streetAddress: "123 Business Ave, Suite 100",
                 postalCode: "10001",
               },
-              // Update founder name
               founder: {
                 "@type": "Person",
-                name: "Your Founder Name", // Replace with actual founder name
+                name: "Michael Hassan",
               },
-               // Update founding date
-              foundingDate: "Your Founding Date", // Replace with actual date (e.g., "2014-01-01")
-              numberOfEmployees: "50+", // Update count if necessary
+              foundingDate: "2014",
+              numberOfEmployees: "50+",
               areaServed: "United States",
               serviceType: [
                 "Business Consulting",
@@ -159,12 +150,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      {/* Apply font variables to body class */}
-      <body className={`${inter.variable} ${poppins.variable}`}> {/* Use font variables */}
-        <Navigation /> {/* Ensure Navigation uses updated styles */}
+      <body className={inter.className}>
+        <Navigation />
         <main>{children}</main>
-        <Footer /> {/* Ensure Footer uses updated styles */}
-        <WhatsAppChat /> {/* Ensure WhatsAppChat uses updated styles */}
+        <Footer />
+        <WhatsAppChat />
       </body>
     </html>
   )
