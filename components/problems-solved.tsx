@@ -101,7 +101,7 @@ export default function ProblemsSolved() {
   ]
 
   return (
-    <section className="py-24 px-4 bg-pink-500"> {/* Use background variable */}
+    <section className="py-24 px-4 bg-green-500"> {/* Use background variable */}
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16 animate-slide-up">
