@@ -52,7 +52,7 @@ const config: Config = {
           800: "#201E1F"
         },
         sage: {
-          DEFAULT: "#BCB88A",
+          DEFAULT: "#fffaf5",
           50: "#F1F0E5",
           100: "#E8E6D3",
           200: "#DFDCC1",
