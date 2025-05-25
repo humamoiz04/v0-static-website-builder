@@ -52,22 +52,22 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-gradient-to-br from-gray-800 to-purple-900 text-white">
+    <footer className="bg-slate-900 text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-coral-500 to-purple-500 rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold text-xl">M</span>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-coral-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
                 MH Digital Solutions
               </span>
             </Link>
 
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-slate-300 mb-6 leading-relaxed">
               All-in-One Business Solutions from Startup to Scale-Up. We fix, build & grow your business with proven
               strategies and 50% cost reduction through global talent solutions.
             </p>
@@ -76,44 +76,31 @@ export default function Footer() {
             <div className="flex items-center gap-4 mb-6">
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5 text-yellow-400" />
-                <span className="text-sm text-gray-300">4.9/5 Rating</span>
+                <span className="text-sm text-slate-300">4.9/5 Rating</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-coral-400" />
-                <span className="text-sm text-gray-300">Verified</span>
+                <Shield className="w-5 h-5 text-emerald-400" />
+                <span className="text-sm text-slate-300">Verified</span>
               </div>
               <div className="flex items-center gap-2">
                 <Award className="w-5 h-5 text-blue-400" />
-                <span className="text-sm text-gray-300">Award Winner</span>
+                <span className="text-sm text-slate-300">Award Winner</span>
               </div>
             </div>
 
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-coral-400" />
-                <a href="tel:+17575504040" className="text-gray-300 hover:text-coral-400 transition-colors">
-                  +1 (757) 550-4040
-                </a>
+                <Phone className="w-5 h-5 text-emerald-400" />
+                <span className="text-slate-300">+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-green-400" />
-                <a href="https://wa.me/17075822255" className="text-gray-300 hover:text-green-400 transition-colors">
-                  +1 (707) 582-2255 (WhatsApp)
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-coral-400" />
-                <a
-                  href="mailto:hello@mhdigitalsolutions.com"
-                  className="text-gray-300 hover:text-coral-400 transition-colors"
-                >
-                  hello@mhdigitalsolutions.com
-                </a>
+                <Mail className="w-5 h-5 text-emerald-400" />
+                <span className="text-slate-300">hello@mhdigitalsolutions.com</span>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-coral-400 mt-0.5" />
-                <span className="text-gray-300">
+                <MapPin className="w-5 h-5 text-emerald-400 mt-0.5" />
+                <span className="text-slate-300">
                   123 Business Ave, Suite 100
                   <br />
                   New York, NY 10001, USA
@@ -128,7 +115,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <Link href={service.href} className="text-gray-300 hover:text-coral-400 transition-colors text-sm">
+                  <Link href={service.href} className="text-slate-300 hover:text-emerald-400 transition-colors text-sm">
                     {service.name}
                   </Link>
                 </li>
@@ -142,7 +129,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {company.map((item, index) => (
                 <li key={index}>
-                  <Link href={item.href} className="text-gray-300 hover:text-coral-400 transition-colors text-sm">
+                  <Link href={item.href} className="text-slate-300 hover:text-emerald-400 transition-colors text-sm">
                     {item.name}
                   </Link>
                 </li>
@@ -156,7 +143,10 @@ export default function Footer() {
             <ul className="space-y-3">
               {resources.map((resource, index) => (
                 <li key={index}>
-                  <Link href={resource.href} className="text-gray-300 hover:text-coral-400 transition-colors text-sm">
+                  <Link
+                    href={resource.href}
+                    className="text-slate-300 hover:text-emerald-400 transition-colors text-sm"
+                  >
                     {resource.name}
                   </Link>
                 </li>
@@ -166,11 +156,11 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-gray-700">
+        <div className="mt-12 pt-8 border-t border-slate-700">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl font-bold text-white mb-2">Get Business Growth Tips</h3>
-              <p className="text-gray-300">
+              <p className="text-slate-300">
                 Subscribe to our newsletter for the latest insights on cost reduction, global talent, and business
                 optimization.
               </p>
@@ -179,9 +169,9 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-coral-500"
+                className="flex-1 px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
-              <Button className="bg-coral-600 hover:bg-coral-700 text-white px-6 py-3">
+              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3">
                 Subscribe
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
@@ -191,11 +181,11 @@ export default function Footer() {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-gray-700">
+      <div className="border-t border-slate-700">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
-            <div className="text-gray-400 text-sm">© 2024 MH Digital Solutions. All rights reserved.</div>
+            <div className="text-slate-400 text-sm">© 2024 MH Digital Solutions. All rights reserved.</div>
 
             {/* Legal Links */}
             <div className="flex flex-wrap gap-6">
@@ -203,7 +193,7 @@ export default function Footer() {
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-gray-400 hover:text-coral-400 transition-colors text-sm"
+                  className="text-slate-400 hover:text-emerald-400 transition-colors text-sm"
                 >
                   {item.name}
                 </Link>
@@ -213,40 +203,32 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex items-center gap-4">
               <Link
-                href="https://www.facebook.com/share/1C6iWHe1fC/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-coral-400 transition-colors"
-                aria-label="Facebook"
+                href="https://linkedin.com/company/mhdigitalsolutions"
+                className="text-slate-400 hover:text-emerald-400 transition-colors"
+                aria-label="LinkedIn"
               >
-                <Facebook className="w-5 h-5" />
+                <Linkedin className="w-5 h-5" />
               </Link>
               <Link
-                href="https://www.instagram.com/mh_digitalsolutions"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-coral-400 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </Link>
-              <Link
-                href="https://x.com/moiz_khan845"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-coral-400 transition-colors"
+                href="https://twitter.com/mhdigitalsolutions"
+                className="text-slate-400 hover:text-emerald-400 transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />
               </Link>
               <Link
-                href="https://linkedin.com/company/mhdigitalsolutions"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-coral-400 transition-colors"
-                aria-label="LinkedIn"
+                href="https://facebook.com/mhdigitalsolutions"
+                className="text-slate-400 hover:text-emerald-400 transition-colors"
+                aria-label="Facebook"
               >
-                <Linkedin className="w-5 h-5" />
+                <Facebook className="w-5 h-5" />
+              </Link>
+              <Link
+                href="https://instagram.com/mhdigitalsolutions"
+                className="text-slate-400 hover:text-emerald-400 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
               </Link>
             </div>
           </div>
