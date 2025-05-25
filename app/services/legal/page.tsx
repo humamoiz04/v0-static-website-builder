@@ -218,21 +218,16 @@ export default function LegalCompliancePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="flex items-center gap-3">
-                <Badge className="bg-coral-100 text-coral-800 hover:bg-coral-200 px-4 py-2 text-sm font-medium">
-                  Legal & Compliance Services
-                </Badge>
-                <Badge className="bg-gradient-to-r from-coral-500 to-purple-500 text-white px-3 py-1 text-xs font-bold animate-pulse">
-                  🔥 POPULAR
-                </Badge>
-              </div>
+              <Badge className="bg-amber-100 text-amber-800 hover:bg-amber-200 px-4 py-2 text-sm font-medium">
+                Legal & Compliance Services
+              </Badge>
 
               <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-gray-800 via-coral-600 to-gray-800 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-slate-900 via-amber-800 to-slate-900 bg-clip-text text-transparent">
                   Protect & Legitimize
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-coral-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
                   Your Business
                 </span>
               </h1>

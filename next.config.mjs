@@ -1,21 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    ignoreDuringBuilds: true, // Valid syntax, but hides lint errors
+    ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // Valid syntax, but hides type errors
+    ignoreBuildErrors: true,
   },
   images: {
-    formats: ['image/webp', 'image/avif'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'vercel', // Valid syntax, but broadly allows all HTTPS hostnames
-      },
-    ],
+    unoptimized: true,
   },
-  // Removed experimental optimizeCss that was causing critters error // Valid comment
 }
 
 export default nextConfig
