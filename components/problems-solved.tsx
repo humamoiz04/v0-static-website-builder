@@ -83,7 +83,7 @@ export default function ProblemsSolved() {
   ]
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-br from-pink-500 via-emerald-900 to-slate-900">
+    <section className="py-24 px-4 bg-gradient-to-br from-pink-500 via-aqua-900 to-slate-900">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
