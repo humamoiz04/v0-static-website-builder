@@ -7,7 +7,6 @@ export default function ProblemsSolved() {
   const problemCategories = [
     {
       category: 'Business Consultation & Strategy',
-      color: 'from-emerald-500 to-teal-500',
       problems: [
         {
           problem: 'I started a café but customers don\'t return.',
@@ -23,7 +22,6 @@ export default function ProblemsSolved() {
     },
     {
       category: 'Digital Services',
-      color: 'from-blue-500 to-indigo-500',
       problems: [
         {
           problem: 'My website gets traffic but no one calls.',
@@ -39,7 +37,6 @@ export default function ProblemsSolved() {
     },
     {
       category: 'E-Commerce Solutions',
-      color: 'from-purple-500 to-pink-500',
       problems: [
         {
           problem: 'My Shopify store gets traffic but no sales!',
@@ -55,7 +52,6 @@ export default function ProblemsSolved() {
     },
     {
       category: 'Organic Marketing',
-      color: 'from-green-500 to-emerald-500',
       problems: [
         {
           problem: 'I post daily on Instagram but get no sales.',
@@ -66,7 +62,6 @@ export default function ProblemsSolved() {
     },
     {
       category: 'Business Optimization',
-      color: 'from-amber-500 to-orange-500',
       problems: [
         {
           problem: 'My restaurant has empty tables but customers wait because hostess is overwhelmed.',
@@ -83,53 +78,84 @@ export default function ProblemsSolved() {
   ]
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-br from-pink-500 via-aqua-900 to-slate-900">
-      <div className="max-w-7xl mx-auto">
+    <section className="problems-solved-section">
+      <div className="problems-solved-container">
         {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-6 bg-emerald-400 text-emerald-900 hover:bg-emerald-300 px-6 py-2 text-lg font-medium">
+        <div className="problems-solved-header">
+          <Badge className="problems-solved-badge">
             Real Problems, Real Solutions
           </Badge>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          <h2 className="problems-solved-title">
             Problems We Solve Daily
           </h2>
-          <p className="text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">
+          <p className="problems-solved-description">
             See how we've transformed businesses facing the exact same challenges you might be experiencing.
           </p>
         </div>
 
         {/* Problems by Category */}
-        <div className="space-y-12">
+        <div className="problems-categories-container">
           {problemCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex}>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+            <div key={categoryIndex} className="problem-category">
+              <h3 className="problem-category-title">
                 {category.category}
               </h3>
               
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="problems-grid">
                 {category.problems.map((item, problemIndex) => (
-                  <Card key={problemIndex} className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300">
-                    <CardHeader className="pb-4">
-                      <div className="flex items-start gap-4">
-                        <div className="p-2 bg-red-500/20 rounded-lg">
-                          <AlertTriangle className="w-6 h-6 text-red-400" />
+                  <Card key={problemIndex} className="problem-card">
+                    <CardHeader className="problem-card-header">
+                      <div className="problem-card-header-content">
+                        <div className="problem-icon-container">
+                          <AlertTriangle className="problem-icon" />
                         </div>
-                        <div className="flex-1">
-                          <CardTitle className="text-white text-lg mb-2">
+                        <div className="problem-text-container">
+                          <CardTitle className="problem-label">
                             Problem:
                           </CardTitle>
-                          <CardDescription className="text-red-200 text-base italic">
+                          <CardDescription className="problem-text">
                             "{item.problem}"
                           </CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                     
-                    <CardContent className="space-y-4">
-                      <div className="flex items-start gap-4">
-                        <div className="p-2 bg-emerald-500/20 rounded-lg">
-                          <CheckCircle className="w-6 h-6 text-emerald-400" />
+                    <CardContent className="problem-card-content">
+                      <div className="solution-container">
+                        <div className="solution-icon-container">
+                          <CheckCircle className="solution-icon" />
                         </div>
-                        <div className="flex-1">
-                          <h4 className="text-emerald-300 font-semibold mb-2">Our Solution:</h4>
-                          <p className="text-emerald-100">{item.solution}
+                        <div className="solution-text-container">
+                          <h4 className="solution-label">Our Solution:</h4>
+                          <p className="solution-text">{item.solution}</p>
+                        </div>
+                      </div>
+
+                      <div className="result-container">
+                        <div className="result-icon-container">
+                          <TrendingUp className="result-icon" />
+                        </div>
+                        <div className="result-text-container">
+                          <h4 className="result-label">Typical Result:</h4>
+                          <p className="result-text">{item.result}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="problems-solved-cta">
+          <Button className="problems-solved-button">
+            Get Your Custom Solution
+            <ArrowRight className="button-icon" />
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
