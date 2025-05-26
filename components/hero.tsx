@@ -30,7 +30,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-emerald-50/30">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)] -z-10" />
+      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
       <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-200/30 rounded-full blur-3xl -z-10 animate-float" />
       <div
         className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl -z-10 animate-float"
@@ -51,7 +51,7 @@ export default function Hero() {
                   From Startup
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                <span className="linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%) bg-clip-text text-transparent">
                   to Scale-Up
                 </span>
               </h1>
