@@ -32,10 +32,7 @@ export default function Hero() {
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
       <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-200/30 rounded-full blur-3xl -z-10 animate-float" />
-      <div
-        className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl -z-10 animate-float"
-        style={{ animationDelay: "1s" }}
-      />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl -z-10 animate-float animation-delay-1000" />
 
       <div className="max-w-7xl mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -51,7 +48,7 @@ export default function Hero() {
                   From Startup
                 </span>
                 <br />
-                <span className="linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%) bg-clip-text text-transparent">
+                <span className="bg-[linear-gradient(135deg,#8B5CF6_0%,#7C3AED_100%)] bg-clip-text text-transparent">
                   to Scale-Up
                 </span>
               </h1>
@@ -67,8 +64,7 @@ export default function Hero() {
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className={`flex items-center gap-3 animate-fade-in animation-delay-${index * 100}`}
                 >
                   <div className="text-emerald-600">{benefit.icon}</div>
                   <span className="text-slate-700 font-medium">{benefit.text}</span>
@@ -100,8 +96,7 @@ export default function Hero() {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="text-center group animate-scale-in"
-                  style={{ animationDelay: `${index * 0.2}s` }}
+                  className={`text-center group animate-scale-in animation-delay-${index * 200}`}
                 >
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <div className="text-emerald-600 group-hover:scale-110 transition-transform">{stat.icon}</div>
@@ -114,7 +109,7 @@ export default function Hero() {
           </div>
 
           {/* Right Content - Visual */}
-          <div className={`relative ${isVisible ? "animate-fade-in" : "opacity-0"}`} style={{ animationDelay: "0.3s" }}>
+          <div className={`relative ${isVisible ? "animate-fade-in animation-delay-300" : "opacity-0"}`}>
             <div className="relative bg-white rounded-3xl shadow-2xl p-8 border border-emerald-100 hover:shadow-3xl transition-shadow duration-500">
               {/* Business Meeting Image */}
               <div className="relative mb-6 rounded-2xl overflow-hidden">
@@ -173,10 +168,7 @@ export default function Hero() {
                     <span className="text-sm font-semibold text-slate-900">92%</span>
                   </div>
                   <div className="w-full bg-slate-200 rounded-full h-2">
-                    <div
-                      className="bg-blue-500 h-2 rounded-full w-[92%] transition-all duration-1000"
-                      style={{ animationDelay: "0.5s" }}
-                    ></div>
+                    <div className="bg-blue-500 h-2 rounded-full w-[92%] transition-all duration-1000 animation-delay-500"></div>
                   </div>
                 </div>
 
@@ -204,10 +196,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div
-              className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-lg p-4 border border-blue-100 animate-float"
-              style={{ animationDelay: "1s" }}
-            >
+            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-lg p-4 border border-blue-100 animate-float animation-delay-1000">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                   <Star className="w-5 h-5 text-blue-600" />
