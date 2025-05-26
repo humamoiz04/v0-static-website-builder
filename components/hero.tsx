@@ -84,7 +84,7 @@ export default function Hero() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-4 text-lg font-semibold group"
+                className="border-2 border-purple-600 text-emerald-600 hover:bg-emerald-50 px-8 py-4 text-lg font-semibold group"
               >
                 <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                 Watch Success Stories
