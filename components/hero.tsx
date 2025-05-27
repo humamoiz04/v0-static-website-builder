@@ -91,18 +91,22 @@ export default function Hero() {
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-slate-200">
+            {/* Stats - Enhanced without cards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className={`text-center group animate-scale-in animation-delay-${index * 200}`}
+                  className={`group animate-scale-in animation-delay-${index * 200} flex flex-col items-center`}
                 >
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <div className="text-emerald-600 group-hover:scale-110 transition-transform">{stat.icon}</div>
-                    <div className="text-2xl md:text-3xl font-bold text-emerald-600">{stat.number}</div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-2 bg-emerald-100/50 rounded-full text-emerald-600 group-hover:scale-110 transition-transform">
+                      {stat.icon}
+                    </div>
+                    <span className="text-3xl font-bold text-emerald-600">{stat.number}</span>
                   </div>
-                  <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
+                  <span className="text-sm font-medium text-slate-600 text-center px-2">
+                    {stat.label}
+                  </span>
                 </div>
               ))}
             </div>
