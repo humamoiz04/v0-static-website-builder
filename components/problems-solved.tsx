@@ -1,3 +1,5 @@
+"use client"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -78,66 +80,73 @@ export default function ProblemsSolved() {
   ]
 
   return (
-    <section className="problems-solved-section">
-      <div className="problems-solved-container">
+    <section className="py-20 bg-gradient-to-b from-gray-50 to-purple-50/30">
+      <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="problems-solved-header">
-          <Badge className="problems-solved-badge">
+        <div className="text-center mb-16">
+          <Badge className="bg-pink-100 text-pink-800 hover:bg-pink-200 px-4 py-2 text-sm font-medium mb-4 animate-scale-in">
             Real Problems, Real Solutions
           </Badge>
-          <h2 className="problems-solved-title">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Problems We Solve Daily
           </h2>
-          <p className="problems-solved-description">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             See how we've transformed businesses facing the exact same challenges you might be experiencing.
           </p>
         </div>
 
         {/* Problems by Category */}
-        <div className="problems-categories-container">
+        <div className="space-y-16">
           {problemCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="problem-category">
-              <h3 className="problem-category-title">
+            <div key={categoryIndex} className="space-y-6">
+              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-pink-200 pb-2 inline-block">
                 {category.category}
               </h3>
               
-              <div className="problems-grid">
+              <div className="grid md:grid-cols-2 gap-6">
                 {category.problems.map((item, problemIndex) => (
-                  <Card key={problemIndex} className="problem-card">
-                    <CardHeader className="problem-card-header">
-                      <div className="problem-card-header-content">
-                        <div className="problem-icon-container">
-                          <AlertTriangle className="problem-icon" />
+                  <Card 
+                    key={problemIndex} 
+                    className="relative overflow-hidden group hover:shadow-lg transition-shadow duration-300 border-gray-200"
+                  >
+                    {/* Decorative elements */}
+                    <div className="absolute -top-4 -right-4 w-16 h-16 bg-pink-100/30 rounded-full blur-xl -z-10"></div>
+                    <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-purple-100/20 rounded-full blur-xl -z-10"></div>
+                    
+                    <CardHeader className="pb-3">
+                      <div className="flex items-start gap-4">
+                        <div className="p-2 bg-pink-100 rounded-lg text-pink-600">
+                          <AlertTriangle className="w-5 h-5" />
                         </div>
-                        <div className="problem-text-container">
-                          <CardTitle className="problem-label">
+                        <div>
+                          <CardTitle className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
                             Problem:
                           </CardTitle>
-                          <CardDescription className="problem-text">
+                          <CardDescription className="text-lg font-medium text-gray-800 mt-1">
                             "{item.problem}"
                           </CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                     
-                    <CardContent className="problem-card-content">
-                      <div className="solution-container">
-                        <div className="solution-icon-container">
-                          <CheckCircle className="solution-icon" />
+                    <CardContent className="space-y-6">
+                      <div className="flex items-start gap-4">
+                        <div className="p-2 bg-green-100 rounded-lg text-green-600">
+                          <CheckCircle className="w-5 h-5" />
                         </div>
-                        <div className="solution-text-container">
-                          <h4 className="solution-label">Our Solution:</h4>
-                          <p className="solution-text">{item.solution}</p>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Our Solution:</h4>
+                          <p className="text-gray-700 mt-1">{item.solution}</p>
                         </div>
                       </div>
 
-                      <div className="result-container">
-                        <div className="result-icon-container">
-                          <TrendingUp className="result-icon" />
+                      <div className="flex items-start gap-4">
+                        <div className="p-2 bg-orange-100 rounded-lg text-orange-600">
+                          <TrendingUp className="w-5 h-5" />
                         </div>
-                        <div className="result-text-container">
-                          <h4 className="result-label">Typical Result:</h4>
-                          <p className="result-text">{item.result}</p>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Typical Result:</h4>
+                          <p className="text-gray-700 mt-1 font-medium">{item.result}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -149,10 +158,12 @@ export default function ProblemsSolved() {
         </div>
 
         {/* CTA */}
-        <div className="problems-solved-cta">
-          <Button className="problems-solved-button">
+        <div className="text-center mt-20">
+          <Button 
+            className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all group"
+          >
             Get Your Custom Solution
-            <ArrowRight className="button-icon" />
+            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
